@@ -19,18 +19,19 @@
   - `POST /api/shopping-list/export` - Export shopping list as text
 
 ## Currently Completed Features ✅
-- **Recipe Database**: 13+ fully detailed Asian recipes including:
-  - Thai: Pad Thai, Pad See Ew, Cashew Chicken, Massaman Curry
-  - Chinese: Hong Shao Rou (Braised Pork Belly), Garlic Eggplant
-  - Vietnamese: Pho Bo, Bò Lúc Lắc (Shaking Beef), Bún Thịt Nướng
-  - Indian: Butter Chicken, Tandoori Lamb, Chicken Saag
+- **Recipe Database**: 20 fully detailed Asian recipes including:
+  - Thai: Pad Thai, Pad See Ew, Cashew Chicken, Massaman Curry, Tom Kha Gai (Coconut Chicken Soup)
+  - Chinese: Hong Shao Rou (Braised Pork Belly), Garlic Eggplant, Kung Pao Chicken, Char Siu (BBQ Pork), Singapore Noodles
+  - Vietnamese: Pho Bo, Bò Lúc Lắc (Shaking Beef), Bún Thịt Nướng, Bò Kho (Beef Stew)
+  - Indian: Butter Chicken, Tandoori Lamb, Chicken Saag, Chicken Tikka Masala, Lamb Pasanda
   - Indonesian: Beef Rendang
 - **Smart Filtering System**: Filter by cuisine, cook time, satiety, spice level, difficulty
 - **Recipe Gallery**: Beautiful card-based layout with nutritional info and satiety ratings
+- **Simplified Navigation**: Clear tab-based navigation between Gallery, Menu, and Shopping List
 - **Menu Builder**: Select multiple recipes and adjust serving sizes
-- **Shopping List Generator**: Intelligent ingredient consolidation with unit conversion
+- **Shopping List Generator**: Intelligent ingredient consolidation with unit conversion, nutrition summary
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **Export Options**: Download shopping list as text or copy to clipboard
+- **Export Options**: Download shopping list as text, copy to clipboard, or print directly
 
 ## Data Architecture
 - **Data Models**: 
@@ -80,7 +81,16 @@
 - ⭐⭐⭐⭐ Filling: High protein/fiber, very satisfying
 - ⭐⭐⭐⭐⭐ Very Filling: Maximum satiety meals
 
+## Recent Updates (December 2024)
+- ✅ Fixed shopping list generation functionality
+- ✅ Added 7 more recipes (total: 20 recipes)
+- ✅ Simplified navigation with clear tab system
+- ✅ Added nutrition summary to shopping list
+- ✅ Improved state management for shopping list data
+- ✅ Better visual feedback with loading states
+
 ## Features Not Yet Implemented
+- Additional 10+ recipes to reach 30+ total
 - User accounts and saved menus
 - Recipe image generation using AI
 - Nutritional daily totals and meal planning calendar
@@ -91,11 +101,11 @@
 - Custom recipe additions
 
 ## Recommended Next Steps for Development
-1. **Add Database Integration**: Migrate from in-memory storage to Cloudflare D1 for persistence
-2. **Implement User Authentication**: Add user accounts to save menus and preferences
-3. **Add Recipe Images**: Integrate AI image generation for visual recipe cards
-4. **Enhance Mobile Experience**: Add PWA capabilities for offline access
-5. **Add More Recipes**: Expand to 40+ recipes as originally planned
+1. **Add Remaining Recipes**: Add 10+ more recipes to reach 30+ total as specified
+2. **Add Database Integration**: Migrate from in-memory storage to Cloudflare D1 for persistence
+3. **Implement User Authentication**: Add user accounts to save menus and preferences
+4. **Add Recipe Images**: Integrate AI image generation for visual recipe cards
+5. **Enhance Mobile Experience**: Add PWA capabilities for offline access
 6. **Implement Meal Planning Calendar**: Weekly/monthly meal planning features
 7. **Add Nutritional Tracking**: Daily nutritional goals and tracking
 8. **Social Features**: Share menus and recipes with friends
