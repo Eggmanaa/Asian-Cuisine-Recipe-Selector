@@ -806,21 +806,46 @@ h1, h2, h3 {
 @media print {
   body {
     background: white;
+    font-size: 12pt;
   }
   
+  .hero-section,
+  .nav-tabs,
   .filter-bar,
-  .floating-menu-btn,
   .btn,
   .modal-close,
-  .serving-adjuster {
+  .serving-adjuster,
+  .export-options,
+  input[type="checkbox"] {
     display: none !important;
   }
   
   .recipe-card {
     break-inside: avoid;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
   }
   
   .shopping-list {
-    page-break-before: always;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .shopping-category {
+    page-break-inside: avoid;
+  }
+  
+  .shopping-item {
+    page-break-inside: avoid;
+  }
+  
+  h2 {
+    font-size: 18pt;
+    margin-bottom: 1rem;
+  }
+  
+  .category-title {
+    font-size: 14pt;
+    margin-top: 1rem;
   }
 }

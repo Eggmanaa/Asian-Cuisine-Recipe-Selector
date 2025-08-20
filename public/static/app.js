@@ -434,7 +434,7 @@ class RecipeApp {
           <button class="btn btn-secondary" onclick="app.copyToClipboard()">
             <i class="fas fa-copy"></i> Copy to Clipboard
           </button>
-          <button class="btn btn-secondary" onclick="window.print()">
+          <button class="btn btn-secondary" onclick="app.printShoppingList()">
             <i class="fas fa-print"></i> Print
           </button>
         </div>
@@ -704,6 +704,168 @@ class RecipeApp {
       console.error('Error copying to clipboard:', error);
       this.showToast('Error copying to clipboard');
     }
+  }
+
+  printShoppingList() {
+    // Create a new window for printing
+    const printWindow = window.open('', '_blank');
+    
+    if (!printWindow) {
+      this.showToast('Please allow popups to print');
+      return;
+    }
+
+    // Get the shopping list content
+    const shoppingListElement = document.querySelector('.shopping-list');
+    if (!shoppingListElement) {
+      this.showToast('No shopping list to print');
+      return;
+    }
+
+    // Create print-friendly HTML
+    const printContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Shopping List - Asian Recipe Selector</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            padding: 20px;
+            color: #333;
+          }
+          h1 { 
+            font-size: 24px; 
+            margin-bottom: 10px;
+            color: #C41E3A;
+          }
+          h2 { 
+            font-size: 20px; 
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #ddd;
+          }
+          h3 { 
+            font-size: 16px; 
+            margin: 15px 0 10px 0;
+            color: #C41E3A;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 3px;
+          }
+          .header {
+            border-bottom: 3px solid #C41E3A;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+          }
+          .date {
+            color: #666;
+            font-size: 12px;
+          }
+          .nutrition-summary {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+          }
+          .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+          }
+          .nutrition-item {
+            text-align: center;
+          }
+          .nutrition-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00A86B;
+          }
+          .nutrition-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+          }
+          .category {
+            margin: 20px 0;
+            page-break-inside: avoid;
+          }
+          .category-title {
+            font-weight: 600;
+            color: #C41E3A;
+            margin-bottom: 10px;
+          }
+          .item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            page-break-inside: avoid;
+          }
+          .item-name {
+            font-weight: 500;
+          }
+          .item-quantity {
+            color: #00A86B;
+            font-weight: 600;
+            margin-left: 10px;
+          }
+          .item-recipes {
+            font-size: 11px;
+            color: #888;
+            margin-top: 3px;
+          }
+          .checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #999;
+            margin-right: 10px;
+            vertical-align: middle;
+          }
+          .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            font-size: 12px;
+            color: #666;
+          }
+          @media print {
+            body { padding: 10px; }
+            .category { page-break-inside: avoid; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>Shopping List - Asian Recipe Selector</h1>
+          <div class="date">Generated on ${new Date().toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}</div>
+        </div>
+        ${shoppingListElement.innerHTML}
+        <div class="footer">
+          <p>Selected Recipes: ${Array.from(this.selectedRecipes).length}</p>
+          <p>Generated from Asian Recipe Selector</p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    // Write content to print window
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+
+    // Wait for content to load then print
+    printWindow.onload = function() {
+      printWindow.print();
+      // Close the window after printing (optional)
+      printWindow.onafterprint = function() {
+        printWindow.close();
+      };
+    };
   }
 
   calculateTotalNutrition(recipes) {
