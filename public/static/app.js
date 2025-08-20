@@ -5,6 +5,8 @@ class RecipeApp {
     this.selectedRecipes = new Set();
     this.servingMultipliers = {};
     this.currentView = 'gallery'; // gallery, menu, shopping
+    this.shoppingListData = null;
+    this.excludePantryStaples = false;
     this.filters = {
       cuisine: '',
       protein: '',
@@ -44,21 +46,42 @@ class RecipeApp {
     
     app.innerHTML = `
       ${this.renderHero()}
-      ${this.renderFilterBar()}
+      ${this.renderNavTabs()}
+      ${this.currentView === 'gallery' ? this.renderFilterBar() : ''}
       ${this.renderContent()}
-      ${this.renderFloatingMenuButton()}
     `;
     
     this.attachEventListeners();
   }
 
   renderHero() {
+    const selectedCount = this.selectedRecipes.size;
     return `
       <div class="hero-section">
         <h1 class="hero-title">
           <i class="fas fa-bowl-food"></i> Asian Cuisine Recipe Selector
         </h1>
         <p class="hero-subtitle">Build Your Perfect Asian Menu</p>
+        ${selectedCount > 0 ? `<div style="margin-top: 1rem; font-size: 1.1rem;"><i class="fas fa-check-circle"></i> ${selectedCount} recipe${selectedCount > 1 ? 's' : ''} selected</div>` : ''}
+      </div>
+    `;
+  }
+  
+  renderNavTabs() {
+    return `
+      <div class="nav-tabs">
+        <button class="nav-tab ${this.currentView === 'gallery' ? 'active' : ''}" onclick="app.setView('gallery')">
+          <i class="fas fa-th-large"></i> Recipe Gallery
+          <span class="tab-badge">${this.recipes.length}</span>
+        </button>
+        <button class="nav-tab ${this.currentView === 'menu' ? 'active' : ''}" onclick="app.setView('menu')">
+          <i class="fas fa-clipboard-list"></i> My Menu
+          ${this.selectedRecipes.size > 0 ? `<span class="tab-badge badge-primary">${this.selectedRecipes.size}</span>` : ''}
+        </button>
+        <button class="nav-tab ${this.currentView === 'shopping' ? 'active' : ''}" onclick="app.setView('shopping')" 
+          ${this.selectedRecipes.size === 0 ? 'disabled' : ''}>
+          <i class="fas fa-shopping-cart"></i> Shopping List
+        </button>
       </div>
     `;
   }
@@ -329,7 +352,7 @@ class RecipeApp {
     `;
   }
 
-  async renderShoppingList() {
+  renderShoppingList() {
     if (this.selectedRecipes.size === 0) {
       return `
         <div class="shopping-list">
@@ -341,45 +364,108 @@ class RecipeApp {
       `;
     }
 
-    try {
-      const response = await axios.post('/api/shopping-list', {
-        recipeIds: Array.from(this.selectedRecipes),
-        excludePantryStaples: document.getElementById('exclude-pantry')?.checked || false,
-        servingMultipliers: this.servingMultipliers
-      });
-
-      const { list, nutrition } = response.data;
-
+    // Show loading state initially
+    if (!this.shoppingListData) {
+      this.loadShoppingList();
       return `
         <div class="shopping-list">
           <h2>Shopping List</h2>
-          
-          <div style="margin-bottom: 2rem;">
-            <label style="display: flex; align-items: center; gap: 0.5rem;">
-              <input type="checkbox" id="exclude-pantry" onchange="app.render()">
-              Exclude pantry staples (salt, pepper, oil, etc.)
-            </label>
-          </div>
-          
-          ${this.renderShoppingCategories(list)}
-          
-          <div class="export-options">
-            <button class="btn btn-primary" onclick="app.exportShoppingList('text')">
-              <i class="fas fa-download"></i> Export as Text
-            </button>
-            <button class="btn btn-secondary" onclick="app.copyToClipboard()">
-              <i class="fas fa-copy"></i> Copy to Clipboard
-            </button>
-            <button class="btn btn-secondary" onclick="window.print()">
-              <i class="fas fa-print"></i> Print
-            </button>
+          <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Generating shopping list...</p>
           </div>
         </div>
       `;
-    } catch (error) {
-      console.error('Error generating shopping list:', error);
-      return '<div class="shopping-list"><p>Error generating shopping list</p></div>';
     }
+
+    const { list, nutrition } = this.shoppingListData;
+
+    return `
+      <div class="shopping-list">
+        <h2>Shopping List</h2>
+        
+        <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+          <label style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="checkbox" id="exclude-pantry" ${this.excludePantryStaples ? 'checked' : ''} onchange="app.togglePantryStaples()">
+            Exclude pantry staples (salt, pepper, oil, etc.)
+          </label>
+          <button class="btn btn-secondary" onclick="app.refreshShoppingList()">
+            <i class="fas fa-sync"></i> Refresh
+          </button>
+        </div>
+        
+        <div class="nutrition-summary">
+          <h3>Total Nutrition Summary</h3>
+          <div class="nutrition-grid">
+            <div class="nutrition-card">
+              <i class="fas fa-fire"></i>
+              <div class="nutrition-value">${nutrition.totalCalories}</div>
+              <div class="nutrition-label">Calories</div>
+            </div>
+            <div class="nutrition-card">
+              <i class="fas fa-drumstick-bite"></i>
+              <div class="nutrition-value">${nutrition.totalProtein}g</div>
+              <div class="nutrition-label">Protein</div>
+            </div>
+            <div class="nutrition-card">
+              <i class="fas fa-bread-slice"></i>
+              <div class="nutrition-value">${nutrition.totalCarbs}g</div>
+              <div class="nutrition-label">Carbs</div>
+            </div>
+            <div class="nutrition-card">
+              <i class="fas fa-cheese"></i>
+              <div class="nutrition-value">${nutrition.totalFat}g</div>
+              <div class="nutrition-label">Fat</div>
+            </div>
+            <div class="nutrition-card">
+              <i class="fas fa-leaf"></i>
+              <div class="nutrition-value">${nutrition.totalFiber}g</div>
+              <div class="nutrition-label">Fiber</div>
+            </div>
+          </div>
+        </div>
+        
+        ${this.renderShoppingCategories(list)}
+        
+        <div class="export-options">
+          <button class="btn btn-primary" onclick="app.exportShoppingList('text')">
+            <i class="fas fa-download"></i> Export as Text
+          </button>
+          <button class="btn btn-secondary" onclick="app.copyToClipboard()">
+            <i class="fas fa-copy"></i> Copy to Clipboard
+          </button>
+          <button class="btn btn-secondary" onclick="window.print()">
+            <i class="fas fa-print"></i> Print
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  
+  async loadShoppingList() {
+    try {
+      const response = await axios.post('/api/shopping-list', {
+        recipeIds: Array.from(this.selectedRecipes),
+        excludePantryStaples: this.excludePantryStaples || false,
+        servingMultipliers: this.servingMultipliers
+      });
+      
+      this.shoppingListData = response.data;
+      this.render();
+    } catch (error) {
+      console.error('Error loading shopping list:', error);
+      this.showToast('Error generating shopping list');
+    }
+  }
+  
+  togglePantryStaples() {
+    this.excludePantryStaples = !this.excludePantryStaples;
+    this.refreshShoppingList();
+  }
+  
+  refreshShoppingList() {
+    this.shoppingListData = null;
+    this.render();
   }
 
   renderShoppingCategories(list) {
@@ -416,15 +502,14 @@ class RecipeApp {
     }).join('');
   }
 
-  renderFloatingMenuButton() {
-    const count = this.selectedRecipes.size;
-    
-    return `
-      <div class="floating-menu-btn" onclick="app.toggleView()">
-        <i class="fas fa-shopping-cart"></i>
-        ${count > 0 ? `<span class="menu-badge">${count}</span>` : ''}
-      </div>
-    `;
+  setView(view) {
+    if (view === 'shopping' && this.selectedRecipes.size === 0) {
+      this.showToast('Please select recipes first!');
+      return;
+    }
+    this.currentView = view;
+    this.render();
+    window.scrollTo(0, 0);
   }
 
   async showRecipeDetail(recipeId) {
@@ -526,6 +611,9 @@ class RecipeApp {
       this.servingMultipliers[recipeId] = 1;
     }
     
+    // Clear shopping list data when menu changes
+    this.shoppingListData = null;
+    
     this.render();
     this.showToast(this.selectedRecipes.has(recipeId) ? 'Recipe added to menu!' : 'Recipe removed from menu');
   }
@@ -533,6 +621,7 @@ class RecipeApp {
   removeFromMenu(recipeId) {
     this.selectedRecipes.delete(recipeId);
     delete this.servingMultipliers[recipeId];
+    this.shoppingListData = null; // Clear shopping list when menu changes
     this.render();
   }
 
@@ -540,6 +629,7 @@ class RecipeApp {
     const current = this.servingMultipliers[recipeId] || 1;
     const newValue = Math.max(1, Math.min(10, current + delta));
     this.servingMultipliers[recipeId] = newValue;
+    this.shoppingListData = null; // Clear shopping list when servings change
     this.render();
   }
 
@@ -547,24 +637,18 @@ class RecipeApp {
     if (confirm('Are you sure you want to clear all selected recipes?')) {
       this.selectedRecipes.clear();
       this.servingMultipliers = {};
+      this.shoppingListData = null; // Clear shopping list data
       this.render();
       this.showToast('Menu cleared');
     }
   }
 
   toggleView() {
-    if (this.currentView === 'gallery') {
-      this.currentView = this.selectedRecipes.size > 0 ? 'menu' : 'gallery';
-    } else if (this.currentView === 'menu') {
-      this.currentView = 'shopping';
-    } else {
-      this.currentView = 'gallery';
-    }
-    
-    this.render();
+    // Removed - replaced with setView for clearer navigation
   }
 
   async generateShoppingList() {
+    this.shoppingListData = null;
     this.currentView = 'shopping';
     this.render();
   }
