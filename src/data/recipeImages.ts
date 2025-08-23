@@ -3,8 +3,8 @@
 
 export const recipeImages: { [key: string]: string } = {
   // Thai Recipes
-  'pad-thai': 'https://cdn1.genspark.ai/user-upload-image/5_generated/7f01017d-16ba-4565-a1c4-16a1067335e4',
-  'pad-see-ew': 'https://cdn1.genspark.ai/user-upload-image/5_generated/59acaaa5-3032-4793-ad9c-abd3cf2096d2',
+  'pad-thai': 'https://cdn1.genspark.ai/user-upload-image/5_generated/7f52c9d3-17ca-4aa2-a153-d8e34bfef68a',
+  'pad-see-ew': 'https://cdn1.genspark.ai/user-upload-image/5_generated/67b2bf1f-0ac6-4b47-a1a6-787346d27d01',
   'cashew-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bf466d89-e9bc-4423-85fb-49339e58bc42',
   'massaman-curry': 'https://cdn1.genspark.ai/user-upload-image/5_generated/ca42899f-00ab-466a-ac7f-390b4228be2b',
   'tom-kha-gai': 'https://cdn1.genspark.ai/user-upload-image/5_generated/b0c4f164-67ab-48d0-8aa4-7970ba59a43c',
@@ -51,19 +51,19 @@ export const recipeImages: { [key: string]: string } = {
   
   // New Chinese Recipes
   'bang-bang-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/42472fa3-1595-4e0d-b814-047cdbbde0d9',
-  'tomato-scrambled-eggs': 'https://cdn1.genspark.ai/user-upload-image/5_generated/a69bd694-200d-4dd0-ada7-53f3e72ce8b8',
-  'twice-cooked-pork': 'https://cdn1.genspark.ai/user-upload-image/5_generated/05c45230-3bf0-401d-b028-b005b5818d4f',
+  'tomato-scrambled-eggs': 'https://cdn1.genspark.ai/user-upload-image/5_generated/4ca078a7-1ff8-46d3-96ea-156db991ce7f',
+  'twice-cooked-pork': 'https://cdn1.genspark.ai/user-upload-image/5_generated/ef43dfaf-4ac4-424d-8f0a-89d0094300e2',
   'sweet-sour-ribs': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bfad2cb6-1e83-4b0b-975f-d48e66dc64c5',
   'mala-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/71fb0733-420e-491a-902e-cc27708c9f84',
   'dandan-noodles': 'https://cdn1.genspark.ai/user-upload-image/5_generated/b37d2526-4cb4-4efa-802f-adac9669e093',
   'fish-fragrant-eggplant': 'https://cdn1.genspark.ai/user-upload-image/5_generated/a3521a37-0332-44b1-bb06-243fe114b2e5',
-  'guobaorou': 'https://cdn1.genspark.ai/user-upload-image/5_generated/71328fd2-d9eb-47db-ba5b-1ecd95012d3d',
+  'guobaorou': 'https://cdn1.genspark.ai/user-upload-image/5_generated/38920990-a254-480b-a7ab-18ff319febb1',
   
   // Latest Chinese Recipes (Second Batch)
-  'black-pepper-beef': 'https://cdn1.genspark.ai/user-upload-image/5_generated/b9d2c5fa-cfb6-417e-a4f8-07ad5ee6b899',
+  'black-pepper-beef': 'https://cdn1.genspark.ai/user-upload-image/5_generated/35c4f886-dfe9-4745-a14f-a770cad82da9',
   'home-style-tofu': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bcd7b0e4-e7b9-4f73-b7ce-4e41901cdc9f',
   'cumin-lamb': 'https://cdn1.genspark.ai/user-upload-image/5_generated/0150be1e-5e22-469b-b733-39b65431bbd3',
-  'squirrel-fish': 'https://cdn1.genspark.ai/user-upload-image/5_generated/294840bb-fd7a-4146-b71f-0ecc0ce4dfce',
+  'squirrel-fish': 'https://cdn1.genspark.ai/user-upload-image/5_generated/aa8594b8-5060-4d63-ba7f-0a6566d47956',
   
   // Korean Recipes (New Additions)
   'bulgogi': 'https://cdn1.genspark.ai/user-upload-image/5_generated/db1ce9ff-cb90-4709-b838-69587074ca1d',
