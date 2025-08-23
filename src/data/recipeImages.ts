@@ -51,22 +51,22 @@ export const recipeImages: { [key: string]: string } = {
   
   // New Chinese Recipes
   'bang-bang-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/42472fa3-1595-4e0d-b814-047cdbbde0d9',
-  'tomato-scrambled-eggs': 'https://cdn1.genspark.ai/user-upload-image/5_generated/4ca078a7-1ff8-46d3-96ea-156db991ce7f',
-  'twice-cooked-pork': 'https://cdn1.genspark.ai/user-upload-image/5_generated/ef43dfaf-4ac4-424d-8f0a-89d0094300e2',
+  'tomato-scrambled-eggs': 'https://page.gensparksite.com/v1/base64_upload/cf093bbf7375d24f0115a7484c70fc82',
+  'twice-cooked-pork': 'https://page.gensparksite.com/v1/base64_upload/04b74bf4c13060f100599967756cae12',
   'sweet-sour-ribs': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bfad2cb6-1e83-4b0b-975f-d48e66dc64c5',
   'mala-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/71fb0733-420e-491a-902e-cc27708c9f84',
   'dandan-noodles': 'https://cdn1.genspark.ai/user-upload-image/5_generated/b37d2526-4cb4-4efa-802f-adac9669e093',
   'fish-fragrant-eggplant': 'https://cdn1.genspark.ai/user-upload-image/5_generated/a3521a37-0332-44b1-bb06-243fe114b2e5',
-  'guobaorou': 'https://cdn1.genspark.ai/user-upload-image/5_generated/38920990-a254-480b-a7ab-18ff319febb1',
+  'guobaorou': 'https://page.gensparksite.com/v1/base64_upload/d379be9a0c874a476be2ab6c84a4866d',
   
   // Latest Chinese Recipes (Second Batch)
   'black-pepper-beef': 'https://cdn1.genspark.ai/user-upload-image/5_generated/35c4f886-dfe9-4745-a14f-a770cad82da9',
-  'home-style-tofu': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bcd7b0e4-e7b9-4f73-b7ce-4e41901cdc9f',
-  'cumin-lamb': 'https://cdn1.genspark.ai/user-upload-image/5_generated/0150be1e-5e22-469b-b733-39b65431bbd3',
-  'squirrel-fish': 'https://cdn1.genspark.ai/user-upload-image/5_generated/aa8594b8-5060-4d63-ba7f-0a6566d47956',
+  'home-style-tofu': 'https://page.gensparksite.com/v1/base64_upload/f605d9ffd7b543ee0a3c7ce5cdceaeb8',
+  'cumin-lamb': 'https://page.gensparksite.com/v1/base64_upload/3591f12b3b13fd27e9e91a51427a2445',
+  'squirrel-fish': 'https://page.gensparksite.com/v1/base64_upload/f2e28d63cb67242815f5d7b5d240070c',
   
   // Korean Recipes (New Additions)
-  'bulgogi': 'https://cdn1.genspark.ai/user-upload-image/5_generated/db1ce9ff-cb90-4709-b838-69587074ca1d',
+  'bulgogi': 'https://page.gensparksite.com/v1/base64_upload/9a9202e15d43ee353ae779c61200c192',
   'japchae': 'https://cdn1.genspark.ai/user-upload-image/5_generated/14f253aa-c5e0-4754-8731-c8217cbbbae3'
 };
 
