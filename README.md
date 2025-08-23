@@ -4,7 +4,7 @@
 - **Name**: Asian Cuisine Recipe Selector
 - **Goal**: Create an interactive web application for browsing Asian recipes, building custom menus, and generating consolidated shopping lists
 - **Features**: 
-  - 40+ authentic Asian recipes with detailed nutritional information
+  - 44 authentic Asian recipes with detailed nutritional information
   - Smart filtering by cuisine, cooking time, difficulty, and satiety rating
   - Interactive meal planning with serving size adjustment
   - Intelligent shopping list generator with quantity consolidation
@@ -19,13 +19,13 @@
   - `POST /api/shopping-list/export` - Export shopping list as text
 
 ## Currently Completed Features ✅
-- **Recipe Database**: 30 fully detailed Asian recipes including:
-  - **Thai** (6): Pad Thai, Pad See Ew, Cashew Chicken, Massaman Curry, Tom Kha Gai, Pad Woon Sen, Penang Curry
-  - **Chinese** (9): Hong Shao Rou, Garlic Eggplant, Kung Pao Chicken, Char Siu, Singapore Noodles, Three Cup Chicken, Mapo Tofu, Wonton Soup, Laksa, Dan Dan Noodles
+- **Recipe Database**: 44 fully detailed Asian recipes including:
+  - **Thai** (7): Pad Thai, Pad See Ew, Cashew Chicken, Massaman Curry, Tom Kha Gai, Pad Woon Sen, Penang Curry
+  - **Chinese** (21): Hong Shao Rou, Garlic Eggplant, Kung Pao Chicken, Char Siu, Singapore Noodles, Three Cup Chicken, Mapo Tofu, Wonton Soup, Laksa, Dan Dan Noodles, Bang Bang Chicken, Tomato Scrambled Eggs, Twice-Cooked Pork, Sweet & Sour Ribs, Mala Chicken, Dandan Noodles, Fish-Fragrant Eggplant, Guobaorou, Black Pepper Beef, Home-Style Tofu, Cumin Lamb, Squirrel-Shaped Mandarin Fish
   - **Vietnamese** (4): Pho Bo, Bò Lúc Lắc, Bún Thịt Nướng, Bò Kho
   - **Indian** (7): Butter Chicken, Tandoori Lamb, Chicken Saag, Chicken Tikka Masala, Lamb Pasanda, Vegetable Korma, Chicken Korma
   - **Indonesian** (1): Beef Rendang
-  - **Korean** (1): Bibimbap
+  - **Korean** (3): Bibimbap, Bulgogi, Japchae
 - **Smart Filtering System**: Filter by cuisine, cook time, satiety, spice level, difficulty
 - **Recipe Gallery**: Beautiful card-based layout with nutritional info and satiety ratings
 - **Simplified Navigation**: Clear tab-based navigation between Gallery, Menu, and Shopping List
@@ -83,17 +83,20 @@
 - ⭐⭐⭐⭐⭐ Very Filling: Maximum satiety meals
 
 ## Recent Updates (December 2024)
-- ✅ **Complete Recipe Collection**: Added all 30 recipes from the original document
+- ✅ **Latest Recipe Additions**: Added 6 more recipes including 4 Chinese and 2 Korean dishes (44 total recipes)
+- ✅ **Extended Recipe Collection**: Previously added 8 new Chinese recipes (bringing total to 44 recipes)
+- ✅ **AI-Generated Images**: All recipes now have high-quality, authentic AI-generated food images using flux-pro/ultra model
+- ✅ **Fixed Broken Images**: Replaced non-working placeholder images with new AI-generated ones
+- ✅ **Enhanced Print Function**: Improved print functionality with popup fallback for better browser compatibility
+- ✅ **Korean Cuisine Expansion**: Added authentic Korean dishes (Bulgogi, Japchae) alongside existing Bibimbap
 - ✅ Fixed shopping list generation functionality
 - ✅ Simplified navigation with clear tab system
 - ✅ Added nutrition summary to shopping list
-- ✅ Fixed print functionality with custom print window
 - ✅ Improved state management for shopping list data
 - ✅ Better visual feedback with loading states
 
 ## Features Not Yet Implemented
 - User accounts and saved menus
-- Recipe image generation using AI
 - Nutritional daily totals and meal planning calendar
 - Integration with grocery delivery APIs
 - Voice control for hands-free cooking mode
@@ -103,8 +106,7 @@
 
 ## Recommended Next Steps for Development
 1. **Add Database Integration**: Migrate from in-memory storage to Cloudflare D1 for persistence
-3. **Implement User Authentication**: Add user accounts to save menus and preferences
-4. **Add Recipe Images**: Integrate AI image generation for visual recipe cards
+2. **Implement User Authentication**: Add user accounts to save menus and preferences
 5. **Enhance Mobile Experience**: Add PWA capabilities for offline access
 6. **Implement Meal Planning Calendar**: Weekly/monthly meal planning features
 7. **Add Nutritional Tracking**: Daily nutritional goals and tracking
@@ -126,7 +128,7 @@
 - **Status**: ✅ Active (Development)
 - **Build Command**: `npm run build`
 - **Start Command**: `pm2 start ecosystem.config.cjs`
-- **Last Updated**: December 2024
+- **Last Updated**: August 2024
 
 ## Installation & Setup
 

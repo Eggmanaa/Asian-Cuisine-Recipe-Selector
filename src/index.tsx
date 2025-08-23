@@ -3,6 +3,7 @@ import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { recipes, Recipe, calculateSatiety, getSatietyDescription } from './data/recipes'
 import { generateShoppingList, calculateTotalNutrition, exportAsText } from './utils/shoppingList'
+import { getRecipeImage } from './data/recipeImages'
 
 const app = new Hono()
 
@@ -58,7 +59,13 @@ app.get('/api/recipes', (c) => {
     )
   }
   
-  return c.json(filteredRecipes)
+  // Add image URLs to each recipe
+  const recipesWithImages = filteredRecipes.map(recipe => ({
+    ...recipe,
+    imageUrl: getRecipeImage(recipe.id)
+  }))
+  
+  return c.json(recipesWithImages)
 })
 
 // Get single recipe by ID
@@ -70,10 +77,11 @@ app.get('/api/recipes/:id', (c) => {
     return c.json({ error: 'Recipe not found' }, 404)
   }
   
-  // Add satiety description
+  // Add satiety description and image URL
   const satietyDesc = getSatietyDescription(recipe.satietyRating, recipe.protein, recipe.fiber)
+  const imageUrl = getRecipeImage(recipe.id)
   
-  return c.json({ ...recipe, satietyDescription: satietyDesc })
+  return c.json({ ...recipe, satietyDescription: satietyDesc, imageUrl })
 })
 
 // Generate shopping list
