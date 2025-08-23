@@ -11,6 +11,8 @@
   - Beautiful, mobile-responsive design with Asian-inspired aesthetics
 
 ## Live URLs
+- **🌍 Production (Cloudflare Pages)**: https://asian-recipe-selector.pages.dev
+- **🔗 GitHub Repository**: https://github.com/Eggmanaa/Asian-Cuisine-Recipe-Selector
 - **Development**: https://3000-iibkrsiuyenv6ab3m2r7t-6532622b.e2b.dev
 - **API Endpoints**:
   - `GET /api/recipes` - Get all recipes with optional filters
@@ -125,9 +127,10 @@
 
 ## Deployment
 - **Platform**: Cloudflare Pages
-- **Status**: ✅ Active (Development)
+- **Status**: ✅ Active (Production)
+- **Production URL**: https://asian-recipe-selector.pages.dev
 - **Build Command**: `npm run build`
-- **Start Command**: `pm2 start ecosystem.config.cjs`
+- **Deploy Command**: `npx wrangler pages deploy dist --project-name asian-recipe-selector`
 - **Last Updated**: August 2024
 
 ## Installation & Setup
