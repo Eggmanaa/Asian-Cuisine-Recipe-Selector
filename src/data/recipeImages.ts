@@ -3,8 +3,8 @@
 
 export const recipeImages: { [key: string]: string } = {
   // Thai Recipes
-  'pad-thai': 'https://cdn1.genspark.ai/user-upload-image/5_generated/7f52c9d3-17ca-4aa2-a153-d8e34bfef68a',
-  'pad-see-ew': 'https://cdn1.genspark.ai/user-upload-image/5_generated/67b2bf1f-0ac6-4b47-a1a6-787346d27d01',
+  'pad-thai': 'https://page.gensparksite.com/v1/base64_upload/7f90282a8d675920c43525443fb9f0a2',
+  'pad-see-ew': 'https://page.gensparksite.com/v1/base64_upload/91cb2dc46869ca14fa71f2b5e594270e',
   'cashew-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bf466d89-e9bc-4423-85fb-49339e58bc42',
   'massaman-curry': 'https://cdn1.genspark.ai/user-upload-image/5_generated/ca42899f-00ab-466a-ac7f-390b4228be2b',
   'tom-kha-gai': 'https://cdn1.genspark.ai/user-upload-image/5_generated/b0c4f164-67ab-48d0-8aa4-7970ba59a43c',
@@ -17,7 +17,7 @@ export const recipeImages: { [key: string]: string } = {
   'kung-pao-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/c9cf0282-4e8b-48e5-ade0-710e6faf486a',
   'char-siu': 'https://cdn1.genspark.ai/user-upload-image/5_generated/ea4f21de-ee90-4400-9377-573a2de5bd9c',
   'singapore-noodles': 'https://cdn1.genspark.ai/user-upload-image/5_generated/609042c7-9d35-4262-9085-05862861584b',
-  'three-cup-chicken': 'https://cdn1.genspark.ai/user-upload-image/5_generated/a40e338c-cf5b-486e-875b-6d9a0ef78706',
+  'three-cup-chicken': 'https://page.gensparksite.com/v1/base64_upload/ae1ee494442951a94e0da65865d68240',
   'mapo-tofu': 'https://cdn1.genspark.ai/user-upload-image/5_generated/6c52d3c4-d9be-4a89-90d5-4ebf4a6fdc6c',
   'wonton-soup': 'https://cdn1.genspark.ai/user-upload-image/5_generated/bec45414-3903-4689-85a6-bf8cf235c786',
   'laksa': 'https://cdn1.genspark.ai/user-upload-image/5_generated/3e197e95-7ff9-4c4b-89ef-a16b95242640',
@@ -63,7 +63,7 @@ export const recipeImages: { [key: string]: string } = {
   'black-pepper-beef': 'https://cdn1.genspark.ai/user-upload-image/5_generated/35c4f886-dfe9-4745-a14f-a770cad82da9',
   'home-style-tofu': 'https://page.gensparksite.com/v1/base64_upload/f605d9ffd7b543ee0a3c7ce5cdceaeb8',
   'cumin-lamb': 'https://page.gensparksite.com/v1/base64_upload/3591f12b3b13fd27e9e91a51427a2445',
-  'squirrel-fish': 'https://page.gensparksite.com/v1/base64_upload/f2e28d63cb67242815f5d7b5d240070c',
+  'squirrel-fish': 'https://page.gensparksite.com/v1/base64_upload/648a2d57a8ade0125c3017dc27d16327',
   
   // Korean Recipes (New Additions)
   'bulgogi': 'https://page.gensparksite.com/v1/base64_upload/9a9202e15d43ee353ae779c61200c192',
